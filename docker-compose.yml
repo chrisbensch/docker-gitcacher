@@ -9,5 +9,5 @@ services:
     ports:
       - "8080:8080"
     volumes:
-      - ./my-cache-dir:/cache
+      - ./appdata/cache:/cache
     command: ["git-cache-http-server", "--cache-dir", "/cache"]
