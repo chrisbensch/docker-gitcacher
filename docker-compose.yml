@@ -1,0 +1,13 @@
+---
+services:
+  git-cache-http-server:
+    image: chrisbensch/docker-gitcacher:latest
+    container_name: git-cache-http-server
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./my-cache-dir:/cache
+    command: ["git-cache-http-server", "--cache-dir", "/cache"]

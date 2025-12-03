@@ -1,16 +1,13 @@
-FROM nginx:alpine
+FROM node:alpine
 
-# Install git (needed for git-http-backend if serving repos directly)
+# Install git
 RUN apk add --no-cache git
 
-# Create cache directory
-RUN mkdir -p /var/cache/nginx/git && \
-    chown -R nginx:nginx /var/cache/nginx/git
+# Install git-cache-http-server globally
+RUN npm install --global git-cache-http-server
 
-# Copy nginx configuration
-COPY nginx.conf /etc/nginx/nginx.conf
-COPY default.conf /etc/nginx/conf.d/default.conf
+# Expose the default port (change if needed)
+EXPOSE 8080
 
-EXPOSE 80
-
-CMD ["nginx", "-g", "daemon off;"]
+# Start the server
+CMD ["git-cache-http-server"]
