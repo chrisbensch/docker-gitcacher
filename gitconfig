@@ -1,0 +1,3 @@
+[url "http://<git-cache-http-server-ip:8080/"]
+    insteadOf = https://
+    insteadOf = git://
